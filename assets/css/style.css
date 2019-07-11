@@ -1,0 +1,34 @@
+body{
+    background-image: url("../images/body-bg.png");
+    background-size: cover;
+    background-repeat: repeat;
+    background-position: 50% 50%;
+    z-index: -10;
+}
+
+.q-container{
+    background-color: rgba(75,175,198);
+    border: rgb(26, 161, 170) solid 3px;
+    box-shadow: 3px 7px #0e606bbe;
+    width: 100%;
+    height: 450px;
+    margin-top: 10px;
+    color: #2a5547;
+}
+
+.jumbotron{
+    background-color:rgba(27,163,156);
+    font-family: 'Georgia', Times, Times New Roman, serif;
+    width: 100%;
+    color: #34415e;
+}
+
+ul{
+    margin-top: 40px;
+}
+
+ul li{
+    list-style: none;
+    font-size: 30px;
+    color: #114c2a;
+}

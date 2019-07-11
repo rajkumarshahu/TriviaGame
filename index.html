@@ -1,13 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
 
-</body>
-<script src="assets/javascript/app.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron text-center display-4">
+          <p>Totally Trivial Trivia</p>
+      </div>
+      <div class="q-container text-center">
+        <h1 class="mt-4" id="question-holder">Question goes here.....</h1>
+        <ul id="choices-holder">
+            <li>First option</li>
+            <li>First option</li>
+            <li>First option</li>
+            <li>First option</li>
+        </ul>
+      </div>
+
+      <div class="p-5">&nbsp;</div>
+      <footer class="footer fixed-bottom py-4 bg-dark text-white-50">
+        <div class="container text-center">
+          <small
+            >&copy;
+            <script type="text/javascript">
+              document.write(new Date().getFullYear());
+            </script>
+            UofT SCS Coding Bootcamp</small
+          >
+        </div>
+      </footer>
+    </div>
+  </body>
+  <script src="assets/javascript/app.js"></script>
 </html>
