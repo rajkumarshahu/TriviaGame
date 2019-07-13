@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -20,18 +21,51 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
+
     <div class="container">
       <div class="jumbotron text-center display-4">
-          <p>Totally Trivial Trivia</p>
+          <div class="row">
+              <div class="col-3">
+                    <img src="assets/images/charlie-chaplin.png" alt="charlie image" width="100px">
+              </div>
+              <div class="col-6"><p>Totally Trivial Trivia</p></div>
+              <div class="col-3">
+                    <img src="assets/images/charlie-chaplin.png" alt="charlie image" width="100px">
+              </div>
+          </div>
+
       </div>
-      <div class="q-container text-center">
-        <h1 class="mt-4" id="question-holder">Question goes here.....</h1>
-        <ul id="choices-holder">
-            <li>First option</li>
-            <li>First option</li>
-            <li>First option</li>
-            <li>First option</li>
-        </ul>
+
+      <div class="main-container text-center">
+          <div class="start-screen">
+                <button id="start-btn">Start</button>
+            </div>
+
+        <div class="q-container">
+            <div class="row text-center m-4" id="remaining-time">
+
+            </div>
+            <div class="row" id="question-number">
+
+            </div>
+            <div class="margin h3" id="question-holder">
+
+            </div>
+
+            <ul id="choices-holder" class="mt-4">
+
+            </ul>
+        </div>
+        <div>
+            <img id="image" src="" alt="images">
+        </div>
+
+        <div class="result-container">
+            <button id="play-again-btn">Play Again</button>
+        </div>
+
+
+
       </div>
 
       <div class="p-5">&nbsp;</div>
