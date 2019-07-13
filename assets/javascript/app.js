@@ -115,6 +115,7 @@ $(() =>{
 
   $("#play-again-btn").on("click", (e)=> {
     $(e.currentTarget).hide();
+    $('.decision-container').show();
     startGame();
   });
 
