@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
+    <title>TrivialTrivia : Game</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link
       rel="stylesheet"
@@ -12,6 +12,7 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 
     <link
       rel="stylesheet"
@@ -36,38 +37,27 @@
 
       </div>
 
-      <div class="main-container text-center">
+      <div class="main-container bg-image-container text-center">
           <div class="start-screen">
-                <button id="start-btn">Start</button>
+                <button id="start-btn" class="animated fadeIn delay-1s">Start</button>
             </div>
 
         <div class="q-container">
-            <div class="row text-center m-4" id="remaining-time">
-
+            <div class="row text-center m-4" id="remaining-time"></div>
+            <div class="row" id="question-number"></div>
+            <div class="margin h3 animated pulse delay-0.5s" id="question-holder"></div>
+            <div class="animated fadeInLeft delay-1s">
+                <ul id="choices-holder" class="mt-4 "></ul>
             </div>
-            <div class="row" id="question-number">
-
-            </div>
-
-            <div class="margin h3" id="question-holder">
-
-            </div>
-
-            <ul id="choices-holder" class="mt-4">
-
-            </ul>
         </div>
         <div class="decision-container">
-            <div id="message"></div>
-            <img id="image" class="img-thumbnail" src="" alt="images">
+            <div class="message"></div>
+            <img class="image" class="img-thumbnail" src="" alt="images" />
         </div>
 
         <div class="result-container">
             <button id="play-again-btn">Play Again</button>
         </div>
-
-
-
       </div>
 
       <div class="p-5">&nbsp;</div>

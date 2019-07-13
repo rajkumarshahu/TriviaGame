@@ -5,12 +5,18 @@ body{
 }
 
 .main-container{
-    background: rgba(75,175,198, 0.7) url("../images/charlie-chaplin-2.png") no-repeat right center;
-    background-size: contain;
+
     border: rgb(26, 161, 170) solid 3px;
     box-shadow: 3px 7px #0e606bbe;
     height: 550px;
     color: #2a5547;
+
+}
+
+.bg-image-container{
+    background: rgba(75,175,198, 0.7) url("../images/charlie-chaplin-3.jpg") no-repeat right center;
+    background-size: contain;
+    z-index: -1;
 }
 
 .start-screen{
@@ -50,6 +56,7 @@ ul li{
     font-size: 25px;
     color: #114c2a;
     line-height: 50px;
+    cursor: pointer;
 }
 
 ul li:hover{
