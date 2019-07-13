@@ -60,10 +60,10 @@ const trivia = [
     choices: [
       "A Women of Paris",
       "City Lights",
-      " The Life a Tramp",
+      "The Life of a Tramp",
       " The Kid",
     ],
-    answer: "The Life a Tramp",
+    answer: "The Life of a Tramp",
     gif: "assets/images/gif-07.gif",
   },
   {
@@ -109,6 +109,7 @@ $(() => {
   $("#start-btn").on("click", e => {
     $(e.currentTarget).hide();
     $("#question-holder").show();
+    $("#remaining-time").show();
     startGame();
   });
 
@@ -129,6 +130,7 @@ $(() => {
     $(".margin").show();
     $("#choices-holder").empty();
     $(".decision-container").hide();
+    $("#remaining-time").show();
     isAnswered = true;
     indexOfUserChoice = null;
 
@@ -161,14 +163,14 @@ $(() => {
 
   let getCountDown = () => {
     maxTime = 5;
-    $("#remaining-time").text(maxTime);
+    $("#remaining-time").html(`<h3>Time remaining: ${maxTime} seconds</h3>`);
     answered = true;
     intervalId = setInterval(showCountdown, 1000);
   };
 
   let showCountdown = () => {
     maxTime--;
-    $("#remaining-time").text(maxTime);
+    $("#remaining-time").html(`<h3>Time remaining: ${maxTime} seconds</h3>`);
     if (maxTime < 1) {
       clearInterval(intervalId);
       isAnswered = false;
@@ -183,6 +185,7 @@ $(() => {
     $(".decision-container").show();
 
 
+
     console.log("trivia[currentQIndex].choices[indexOfUserChoice]: "+trivia[currentQIndex].choices[indexOfUserChoice]);
     console.log("currentQIndex: "+ currentQIndex);
 
@@ -192,7 +195,10 @@ $(() => {
 
     if( indexOfUserChoice == null) {
       isAnswered = true;
-      $(".message").text("Time ran out!!!");
+      $("#remaining-time").hide();
+      $(".message").html(`<div class="alert alert-info animated wobble" role="alert">
+      <h3>Time ran out!!!<br> Correct answer is: <strong>${trivia[currentQIndex].answer}</strong></h3>
+    </div>`);
     }else{
       if (
         trivia[currentQIndex].choices[indexOfUserChoice].localeCompare(
@@ -200,10 +206,14 @@ $(() => {
         ) === 0 &&
         isAnswered == true
       ) {
-        $(".message").text("Correct answer!!!");
+        $(".message").html(`<div class="alert alert-success animated wobble" role="alert">
+        <h3>Correct!! You got it right.<br>Your answer is: <strong>${trivia[currentQIndex].answer}</strong></h3>
+      </div>`);
         console.log("correct answer");
       } else {
-        $(".message").text("Sorry incorrect answer!!!");
+        $(".message").html(`<div class="alert alert-danger animated wobble" role="alert">
+        <h3>Incorrect!!<br> Correct answer is: <strong>${trivia[currentQIndex].answer}</strong></h3>
+      </div>`);
         isAnswered == true
         console.log("Sorry");
       }
