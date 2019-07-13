@@ -171,7 +171,40 @@ let getCountDown = () => {
     }
   }
 
+  let getDecision = ()=>{
+    $("#question-holder").empty();
+    $("#choices-holder").empty();
 
+
+    console.log(trivia[currentQIndex].choices[indexOfUserChoice].localeCompare(trivia[currentQIndex].answer));
+        $("#image").attr("src", `${trivia[currentQIndex].gif}`);
+    if (
+        trivia[currentQIndex].choices[indexOfUserChoice].localeCompare(trivia[currentQIndex].answer) ===
+          0 &&
+        isAnswered == true
+      ) {
+
+        console.log("correct answer");
+      } else if(
+        trivia[currentQIndex].choices[indexOfUserChoice].localeCompare(trivia[currentQIndex].answer) !=
+          0 &&
+        isAnswered == true
+      ) {
+        console.log("Sorry");
+      }else{
+
+          isAnswered = true;
+      }
+
+      if(currentQIndex == (trivia.length-1)){
+		setTimeout(endGame, 5000)
+	} else{
+		currentQIndex++;
+        setTimeout(trivialTrivia, 5000);
+
+	}
+
+  }
 
   let endGame = ()=>{
     $('#result-container').show();
