@@ -95,7 +95,7 @@ const trivia = [
     },
   ];
 
-  let userChoice, isAnswered, indexOfUserChoice, intervalId;
+  let isAnswered, indexOfUserChoice, intervalId;
   let currentQIndex = 0;
 
 
@@ -104,11 +104,11 @@ const trivia = [
 $(() =>{
     $("#question-holder").hide();
     $("#play-again-btn").hide();
+
     $("#start-btn").on("click", (e)=> {
         $(e.currentTarget).hide();
         $("#question-holder").show();
         startGame();
-        console.log(trivia[1].gif)
       });
 
 
@@ -127,8 +127,10 @@ $(() =>{
 
   let trivialTrivia = () => {
     $("#question-holder").empty();
+    $(".margin").show();
     $("#choices-holder").empty();
-    $("#image").empty();
+    $("#image").hide();
+    $("#message").hide();
     isAnswered = true;
 
 
@@ -155,7 +157,7 @@ $(() =>{
 }
 
 let getCountDown = () => {
-    maxTime = 1;
+    maxTime = 10;
     $("#remaining-time").text(maxTime);
     answered = true;
     intervalId = setInterval(showCountdown, 1000);
@@ -172,44 +174,55 @@ let getCountDown = () => {
   }
 
   let getDecision = ()=>{
+
     $("#question-holder").empty();
+    $(".margin").hide();
     $("#choices-holder").empty();
 
 
     console.log(trivia[currentQIndex].choices[indexOfUserChoice].localeCompare(trivia[currentQIndex].answer));
-        $("#image").attr("src", `${trivia[currentQIndex].gif}`);
+    $("#image").attr("src", `${trivia[currentQIndex].gif}`);
+    $("#image").show();
+    $("#message").show();
+
     if (
         trivia[currentQIndex].choices[indexOfUserChoice].localeCompare(trivia[currentQIndex].answer) ===
           0 &&
         isAnswered == true
       ) {
-
+            $("#message").text("Correct answer!!!");
         console.log("correct answer");
       } else if(
         trivia[currentQIndex].choices[indexOfUserChoice].localeCompare(trivia[currentQIndex].answer) !=
           0 &&
         isAnswered == true
       ) {
+        $("#message").text("Sorry incorrect answer!!!")
         console.log("Sorry");
       }else{
-
+        $("#message").text("Time ran out!!!")
           isAnswered = true;
+
       }
 
       if(currentQIndex == (trivia.length-1)){
 		setTimeout(endGame, 5000)
 	} else{
-		currentQIndex++;
+        currentQIndex++;
+
         setTimeout(trivialTrivia, 5000);
 
-	}
+    }
+
+
 
   }
 
   let endGame = ()=>{
+    $('.decision-container').hide();
     $('#result-container').show();
-
       $("#play-again-btn").show();
   }
+
 
 });
