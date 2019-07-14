@@ -122,6 +122,9 @@ $(() => {
     $(e.currentTarget).hide();
     $(".result-container").hide();
     $("#question-holder").show();
+    notAnswered = 0;
+    correctAns = 0;
+    incorrectAns =0;
     startGame();
   });
 
@@ -141,7 +144,7 @@ $(() => {
     indexOfUserChoice = null;
 
 
-    $("#question-holder").html(`Q${trivia[currentQIndex].id}/${trivia.length}: ${trivia[currentQIndex].question}`);
+    $("#question-holder").html(`Q.(${trivia[currentQIndex].id}/${trivia.length}): ${trivia[currentQIndex].question}`);
 
     trivia[currentQIndex].choices = shuffleArray(trivia[currentQIndex].choices);
 
@@ -231,7 +234,7 @@ $(() => {
       setTimeout(endGame, 5000);
     } else {
       currentQIndex++;
-      setTimeout(trivialTrivia, 5000);
+      setTimeout(trivialTrivia, 1000);
     }
   };
 
