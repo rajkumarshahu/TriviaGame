@@ -113,6 +113,7 @@ $(() => {
   $("#start-btn").on("click", e => {
     $(e.currentTarget).hide();
     $(".result-container").hide();
+    $("#about-charlie").hide();
     $("#question-holder").show();
     $("#remaining-time").show();
     startGame();
@@ -171,7 +172,7 @@ $(() => {
   };
 
   let getCountDown = () => {
-    maxTime = 15;
+    maxTime = 20;
     $("#remaining-time").html(`<h3>Time remaining: ${maxTime} seconds</h3>`);
     answered = true;
     intervalId = setInterval(showCountdown, 1000);
@@ -234,7 +235,7 @@ $(() => {
       setTimeout(endGame, 5000);
     } else {
       currentQIndex++;
-      setTimeout(trivialTrivia, 1000);
+      setTimeout(trivialTrivia, 5000);
     }
   };
 
