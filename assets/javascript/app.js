@@ -97,17 +97,22 @@ const trivia = [
 
 let isAnswered, indexOfUserChoice, intervalId;
 let currentQIndex = 0;
+let notAnswered = 0;
+let correctAns = 0;
+let incorrectAns =0;
 
-// when window loads show start game button
+
 
 $(() => {
   $("#question-holder").hide();
   $("#play-again-btn").hide();
   $(".decision-container").hide();
-
+  $("#remaining-time").hide();
+  $(".result-container").hide();
 // when start game clicked
   $("#start-btn").on("click", e => {
     $(e.currentTarget).hide();
+    $(".result-container").hide();
     $("#question-holder").show();
     $("#remaining-time").show();
     startGame();
@@ -115,6 +120,7 @@ $(() => {
 
   $("#play-again-btn").on("click", e => {
     $(e.currentTarget).hide();
+    $(".result-container").hide();
     $("#question-holder").show();
     startGame();
   });
@@ -135,7 +141,7 @@ $(() => {
     indexOfUserChoice = null;
 
 
-    $("#question-holder").html(trivia[currentQIndex].question);
+    $("#question-holder").html(`Q${trivia[currentQIndex].id}/${trivia.length}: ${trivia[currentQIndex].question}`);
 
     trivia[currentQIndex].choices = shuffleArray(trivia[currentQIndex].choices);
 
@@ -162,7 +168,7 @@ $(() => {
   };
 
   let getCountDown = () => {
-    maxTime = 5;
+    maxTime = 15;
     $("#remaining-time").html(`<h3>Time remaining: ${maxTime} seconds</h3>`);
     answered = true;
     intervalId = setInterval(showCountdown, 1000);
@@ -183,20 +189,18 @@ $(() => {
     $(".margin").hide();
     $("#choices-holder").empty();
     $(".decision-container").show();
-
-
-
-    console.log("trivia[currentQIndex].choices[indexOfUserChoice]: "+trivia[currentQIndex].choices[indexOfUserChoice]);
-    console.log("currentQIndex: "+ currentQIndex);
-
-    console.log("indexOfUserChoice: "+indexOfUserChoice);
+    // //Test and debugging
+    // console.log("trivia[currentQIndex].choices[indexOfUserChoice]: "+trivia[currentQIndex].choices[indexOfUserChoice]);
+    // console.log("currentQIndex: "+ currentQIndex);
+    // console.log("indexOfUserChoice: "+indexOfUserChoice);
 
     $(".image").attr("src", `${trivia[currentQIndex].gif}`);
 
     if( indexOfUserChoice == null) {
+      notAnswered++;
       isAnswered = true;
       $("#remaining-time").hide();
-      $(".message").html(`<div class="alert alert-info animated wobble" role="alert">
+      $(".message").html(`<div class="alert alert-info ml-4 mr-4 animated bounce" role="alert">
       <h3>Time ran out!!!<br> Correct answer is: <strong>${trivia[currentQIndex].answer}</strong></h3>
     </div>`);
     }else{
@@ -206,13 +210,17 @@ $(() => {
         ) === 0 &&
         isAnswered == true
       ) {
-        $(".message").html(`<div class="alert alert-success animated wobble" role="alert">
-        <h3>Correct!! You got it right.<br>Your answer is: <strong>${trivia[currentQIndex].answer}</strong></h3>
+        correctAns++
+        $("#remaining-time").hide();
+        $(".message").html(`<div class="alert alert-success ml-4 mr-4 animated fadeIn" role="alert">
+        <h3>Correct!!! You got it right.<br>Your answered: <strong>${trivia[currentQIndex].answer}</strong></h3>
       </div>`);
         console.log("correct answer");
       } else {
-        $(".message").html(`<div class="alert alert-danger animated wobble" role="alert">
-        <h3>Incorrect!!<br> Correct answer is: <strong>${trivia[currentQIndex].answer}</strong></h3>
+        incorrectAns++
+        $("#remaining-time").hide();
+        $(".message").html(`<div class="alert alert-danger ml-4 mr-4 animated tada" role="alert">
+        <h3>Incorrect!!!<br> Correct answer is: <strong>${trivia[currentQIndex].answer}.</strong> You answered:<strong>${trivia[currentQIndex].choices[indexOfUserChoice]}.</strong>  </h3>
       </div>`);
         isAnswered == true
         console.log("Sorry");
@@ -229,23 +237,20 @@ $(() => {
 
   let endGame = () => {
     $(".decision-container").hide();
-    $("#result-container").show();
+    $(".result-container").show();
     $("#play-again-btn").show();
+    $("#correct-ans").html(`Correct answers: ${correctAns}`);
+    $("#incorrect-ans").html(`Incorrect answers: ${incorrectAns}`);
+    $("#not-answered").html(`Not attempted: ${notAnswered}`);
   };
 
 });
 
-function shuffleArray ( array ) {
+shuffleArray = ( array )=> {
   var counter = array.length, temp, index;
-  // While there are elements in the array
   while ( counter > 0 ) {
-      // Pick a random index
       index = Math.floor( Math.random() * counter );
-
-      // Decrease counter by 1
       counter--;
-
-      // And swap the last element with it
       temp = array[ counter ];
       array[ counter ] = array[ index ];
       array[ index ] = temp;

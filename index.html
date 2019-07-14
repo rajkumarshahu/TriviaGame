@@ -18,18 +18,20 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
+    <link href="https://fonts.googleapis.com/css?family=BioRhyme|Montserrat|Rakkas|Yatra+One&display=swap" rel="stylesheet">
+
 
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
 
     <div class="container-fluid bg-header ">
-      <div class="bg-light p-4 text-center display-4">
+      <div class="heading bg-light pt-2 text-center display-4">
           <div class="row">
               <div class="col-3">
                     <img src="assets/images/charlie-chaplin.png" alt="charlie image" width="100px">
               </div>
-              <div class="col-6"><p>Totally Trivial Trivia</p></div>
+              <div class="col-6">Totally Trivial Trivia</div>
               <div class="col-3">
                     <img src="assets/images/charlie-chaplin.png" alt="charlie image" width="100px">
               </div>
@@ -39,11 +41,11 @@
 
       <div class="main-container bg-image-container text-center">
           <div class="start-screen">
-                <button id="start-btn" class="animated fadeIn delay-1s">Start</button>
+                <button id="start-btn" class="animated pulse infinite">Start</button>
             </div>
 
         <div class="q-container">
-            <span class="" id="remaining-time"></span>
+            <div class="" id="remaining-time"></div>
             <div class="row" id="question-number"></div>
             <div class="margin h3 animated pulse delay-0.5s" id="question-holder"></div>
             <div class="animated fadeInLeft delay-1s">
@@ -52,11 +54,19 @@
         </div>
         <div class="decision-container">
             <div class="message"></div>
-            <img class="image" class="img-thumbnail" src="" alt="images" />
+            <img class="image animated fadeIn img-thumbnail"  src="" alt="images" />
         </div>
 
-        <div class="result-container">
-            <button id="play-again-btn">Play Again</button>
+        <div class="result-container ">
+            <button id="play-again-btn" class="animated pulse infinite mb-4">Play Again</button>
+            <div class="card mt-4 animated fadeIn slower">
+                <div class="card-header h2 border-info">Your Score:</div>
+                <div class="card-body">
+                    <div id="correct-ans" class="h3"></div>
+                    <div id="incorrect-ans" class="h3"></div>
+                    <div id="not-answered" class="h3"></div>
+                </div>
+            </div>
         </div>
       </div>
 
