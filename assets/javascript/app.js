@@ -38,8 +38,8 @@ const trivia = [
   {
     id: 5,
     question: "How many times was Charlie married?",
-    choices: ["5", "7", "6", "4"],
-    answer: "4",
+    choices: ["Five", "Seven", "Six", "Four"],
+    answer: "Four",
     gif: "assets/images/gif-05.gif",
   },
   {
@@ -95,13 +95,12 @@ const trivia = [
   },
 ];
 
+// Global Variables
 let isAnswered, indexOfUserChoice, intervalId;
 let currentQIndex = 0;
 let notAnswered = 0;
 let correctAns = 0;
-let incorrectAns =0;
-
-
+let incorrectAns = 0;
 
 $(() => {
   $("#question-holder").hide();
@@ -109,7 +108,7 @@ $(() => {
   $(".decision-container").hide();
   $("#remaining-time").hide();
   $(".result-container").hide();
-// when start game clicked
+  // when start button click event triggered
   $("#start-btn").on("click", e => {
     $(e.currentTarget).hide();
     $(".result-container").hide();
@@ -119,22 +118,25 @@ $(() => {
     startGame();
   });
 
+  // Play again button click event
   $("#play-again-btn").on("click", e => {
     $(e.currentTarget).hide();
     $(".result-container").hide();
     $("#question-holder").show();
     notAnswered = 0;
     correctAns = 0;
-    incorrectAns =0;
+    incorrectAns = 0;
     startGame();
   });
 
+  // Game star function
   let startGame = () => {
     currentQIndex = 0;
     indexOfUserChoice = null;
     trivialTrivia();
   };
 
+  // Question and multiple choice rendering function
   let trivialTrivia = () => {
     $("#question-holder").empty();
     $(".margin").show();
@@ -144,9 +146,13 @@ $(() => {
     isAnswered = true;
     indexOfUserChoice = null;
 
+    $("#question-holder").html(
+      `Q.(${trivia[currentQIndex].id}/${trivia.length}): ${
+        trivia[currentQIndex].question
+      }`
+    );
 
-    $("#question-holder").html(`Q.(${trivia[currentQIndex].id}/${trivia.length}): ${trivia[currentQIndex].question}`);
-
+    // Calling shuffleArray function to shuffle the choices
     trivia[currentQIndex].choices = shuffleArray(trivia[currentQIndex].choices);
 
     for (var i = 0; i < trivia[currentQIndex].choices.length; i++) {
@@ -163,7 +169,7 @@ $(() => {
     $("li").click(e => {
       indexOfUserChoice = $(e.target).index(".user-choices");
 
-      console.log('clicked index:');
+      console.log("clicked index:");
       console.log(indexOfUserChoice);
       clearInterval(intervalId);
 
@@ -172,7 +178,7 @@ $(() => {
   };
 
   let getCountDown = () => {
-    maxTime = 20;
+    maxTime = 30;
     $("#remaining-time").html(`<h3>Time remaining: ${maxTime} seconds</h3>`);
     answered = true;
     intervalId = setInterval(showCountdown, 1000);
@@ -188,6 +194,7 @@ $(() => {
     }
   };
 
+  // Function that make decisions based on user's input
   let getDecision = () => {
     $("#question-holder").empty();
     $(".margin").hide();
@@ -200,40 +207,56 @@ $(() => {
 
     $(".image").attr("src", `${trivia[currentQIndex].gif}`);
 
-    if( indexOfUserChoice == null) {
+    // Condition 1: When user fails the attempt
+    if (indexOfUserChoice == null) {
       notAnswered++;
       isAnswered = true;
       $("#remaining-time").hide();
-      $(".message").html(`<div class="alert alert-info ml-4 mr-4 animated bounce" role="alert">
-      <h3>Time ran out!!!<br> Correct answer is:<strong> ${trivia[currentQIndex].answer}</strong></h3>
+      $(".message")
+        .html(`<div class="alert alert-info ml-4 mr-4 animated bounce" role="alert">
+      <h3>Time ran out!!!<br> Correct answer is:<strong> ${
+        trivia[currentQIndex].answer
+      }</strong></h3>
     </div>`);
-    }else{
+    } else {
       if (
+        // Condition 2: When user answers correctly
         trivia[currentQIndex].choices[indexOfUserChoice].localeCompare(
           trivia[currentQIndex].answer
         ) === 0 &&
         isAnswered == true
       ) {
-        correctAns++
+        correctAns++;
         $("#remaining-time").hide();
-        $(".message").html(`<div class="alert alert-success ml-4 mr-4 animated fadeIn" role="alert">
-        <h3>Correct!!! You got it right.<br>Your answered:<strong> ${trivia[currentQIndex].answer}</strong></h3>
+        $(".message")
+          .html(`<div class="alert alert-success ml-4 mr-4 animated fadeIn" role="alert">
+        <h3>Correct!!! You got it right.<br>You answered:<strong> ${
+          trivia[currentQIndex].answer
+        }</strong></h3>
       </div>`);
         console.log("correct answer");
       } else {
-        incorrectAns++
+        // Condition 3: When user's answer is not correct
+        incorrectAns++;
         $("#remaining-time").hide();
-        $(".message").html(`<div class="alert alert-danger ml-4 mr-4 animated tada" role="alert">
-        <h3>Incorrect!!!<br> Correct answer is: <strong>${trivia[currentQIndex].answer}.</strong> You answered:<strong> ${trivia[currentQIndex].choices[indexOfUserChoice]}.</strong>  </h3>
+        $(".message")
+          .html(`<div class="alert alert-danger ml-4 mr-4 animated tada" role="alert">
+        <h3>Incorrect!!!<br> Correct answer is: <strong>${
+          trivia[currentQIndex].answer
+        }.</strong> You answered:<strong> ${
+          trivia[currentQIndex].choices[indexOfUserChoice]
+        }.</strong>  </h3>
       </div>`);
-        isAnswered == true
+        isAnswered == true;
         console.log("Sorry");
       }
     }
 
     if (currentQIndex == trivia.length - 1) {
+      // End the game
       setTimeout(endGame, 5000);
     } else {
+      // Jump to next question
       currentQIndex++;
       setTimeout(trivialTrivia, 5000);
     }
@@ -247,17 +270,18 @@ $(() => {
     $("#incorrect-ans").html(`Incorrect answers: ${incorrectAns}`);
     $("#not-answered").html(`Not attempted: ${notAnswered}`);
   };
-
 });
 
-shuffleArray = ( array )=> {
-  var counter = array.length, temp, index;
-  while ( counter > 0 ) {
-      index = Math.floor( Math.random() * counter );
-      counter--;
-      temp = array[ counter ];
-      array[ counter ] = array[ index ];
-      array[ index ] = temp;
+shuffleArray = array => {
+  var counter = array.length,
+    temp,
+    index;
+  while (counter > 0) {
+    index = Math.floor(Math.random() * counter);
+    counter--;
+    temp = array[counter];
+    array[counter] = array[index];
+    array[index] = temp;
   }
   return array;
-}
+};

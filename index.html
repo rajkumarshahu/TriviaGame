@@ -12,65 +12,92 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"
+    />
 
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <link href="https://fonts.googleapis.com/css?family=BioRhyme|Montserrat|Rakkas|Yatra+One&display=swap" rel="stylesheet">
-
+    <link
+      href="https://fonts.googleapis.com/css?family=BioRhyme|Montserrat|Rakkas|Yatra+One&display=swap"
+      rel="stylesheet"
+    />
 
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
-
     <div class="container-fluid bg-header ">
       <div class="heading bg-light pt-2 text-center display-4">
-          <div class="row">
-              <div class="col-3">
-                    <img src="assets/images/charlie-chaplin.png" alt="charlie image" width="100px">
-              </div>
-              <div class="col-6">Totally Trivial Trivia</div>
-              <div class="col-3">
-                    <img src="assets/images/charlie-chaplin.png" alt="charlie image" width="100px">
-              </div>
+        <div class="row">
+          <div class="col-3">
+            <img
+              src="assets/images/charlie-chaplin.png"
+              alt="charlie image"
+              width="100px"
+            />
           </div>
-
+          <div class="col-6">Totally Trivial Trivia</div>
+          <div class="col-3">
+            <img
+              src="assets/images/charlie-chaplin.png"
+              alt="charlie image"
+              width="100px"
+            />
+          </div>
+        </div>
       </div>
 
       <div class="main-container bg-image-container text-center">
-          <div class="start-screen">
-                <button id="start-btn" class="animated pulse infinite">Start</button>
-                <div id="about-charlie">
-                  <p>Charlie Chaplin was considered one of the greatest filmmakers in the history of cinema, whose movies were and still are popular throughout the world, and have even gained notoriety as time progresses. </p>
-                  <p>Attempt this trivia quiz based on him and know more about him.  </p>
-                </div>
-            </div>
+        <div class="start-screen">
+          <button id="start-btn" class="animated pulse infinite">Start</button>
+          <div id="about-charlie">
+            <p>
+              Charlie Chaplin was considered one of the greatest filmmakers in
+              the history of cinema, whose movies were and still are popular
+              throughout the world, and have even gained notoriety as time
+              progresses.
+            </p>
+            <p>
+              Attempt this trivia quiz based on Charlie Chaplin and know more about him.
+            </p>
+          </div>
+        </div>
 
         <div class="q-container">
-            <div class="" id="remaining-time"></div>
-            <div class="row" id="question-number"></div>
-            <div class="margin h3 animated pulse delay-0.5s" id="question-holder"></div>
-            <div class="animated fadeInLeft delay-1s">
-                <ul id="choices-holder" class="mt-4 "></ul>
-            </div>
+          <div class="" id="remaining-time"></div>
+          <div class="row" id="question-number"></div>
+          <div
+            class="margin h3 animated pulse delay-0.5s"
+            id="question-holder"
+          ></div>
+          <div class="animated fadeInLeft delay-1s">
+            <ul id="choices-holder" class="mt-4 "></ul>
+          </div>
         </div>
         <div class="decision-container">
-            <div class="message"></div>
-            <img class="image animated fadeIn img-thumbnail"  src="" alt="images" />
+          <div class="message"></div>
+          <img
+            class="image animated fadeIn img-thumbnail"
+            src=""
+            alt="images"
+          />
         </div>
 
         <div class="result-container ">
-            <button id="play-again-btn" class="animated pulse infinite mb-4">Play Again</button>
-            <div class="card mt-4 animated fadeIn slower">
-                <div class="card-header h2 border-info">Your Score:</div>
-                <div class="card-body">
-                    <div id="correct-ans" class="h3"></div>
-                    <div id="incorrect-ans" class="h3"></div>
-                    <div id="not-answered" class="h3"></div>
-                </div>
+          <button id="play-again-btn" class="animated pulse infinite mb-4">
+            Play Again
+          </button>
+          <div class="card mt-4 animated fadeIn slower">
+            <div class="card-header h2 border-info">Your Score:</div>
+            <div class="card-body">
+              <div id="correct-ans" class="h3"></div>
+              <div id="incorrect-ans" class="h3"></div>
+              <div id="not-answered" class="h3"></div>
             </div>
+          </div>
         </div>
       </div>
 
