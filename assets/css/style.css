@@ -20,20 +20,22 @@ body{
 
 .main-container{
     background-color: rgba(75,175,198, 0.9);
+    width:90%;
+    margin:auto;
     border: rgb(26, 161, 170) solid 3px;
     box-shadow: 3px 7px #0e606bbe;
-    height: 550px;
+    height: 600px;
     color: #2a5547;
     margin-top: 20px;
 }
 #about-charlie{
     background: url('../images/about-bg.png');
-    background-size: cover;
+
     width: 50%;
     margin: auto;
-    height: 100%;
-    padding: 30px;
-    font-size: 30px;
+    height: auto;
+    padding: 60px;
+    font-size: 25px;
     line-height: 40px;
     margin-top: 30px;
     color: #914f15;
@@ -99,4 +101,104 @@ ul li:hover{
     line-height: 10px;
     width: 50%;
     margin: auto;
+}
+
+
+
+/*
+ media queries starts here
+ */
+
+
+
+@media only screen and (max-width: 640px){
+
+    #about-charlie{
+        width: 90%;
+        padding: 50px;
+        font-size: 20px;
+        line-height: 35px;
+    }
+
+    #start-btn, #play-again-btn{
+        width: 200px;
+        padding: 10px;
+        font-size: 30px;
+    }
+
+    .heading{
+        font-size: 35px;
+    }
+
+    .margin{
+        margin: 5px 25px 20px 25px;
+        padding: 5px;
+    }
+
+    .card{
+        width: 70%;
+    }
+
+}
+
+@media only screen and (min-width: 641px) and (max-width: 768px){
+
+    #about-charlie{
+        width: 100%;
+        padding: 50px;
+        font-size: 25px;
+        line-height: 35px;
+    }
+
+    #start-btn, #play-again-btn{
+        width: 200px;
+        padding: 10px;
+        font-size: 30px;
+    }
+
+    .heading{
+        font-size: 35px;
+    }
+
+    .margin{
+        margin: 5px 25px 20px 25px;
+        padding: 5px;
+    }
+
+    .card{
+        width: 80%;
+    }
+
+}
+
+@media only screen and (min-width: 769px) and (max-width: 875px){
+    #about-charlie{
+        width: 100%;
+        padding: 50px;
+        font-size: 25px;
+        line-height: 35px;
+    }
+
+    .heading{
+        font-size: 40px;
+    }
+
+}
+
+@media only screen and (min-width: 876px) and (max-width: 980px){
+    #about-charlie{
+        width: 100%;
+        padding: 50px;
+        font-size: 25px;
+        line-height: 35px;
+    }
+
+    .heading{
+        font-size: 50px;
+    }
+
+}
+@media only screen and (min-width: 980px){
+
+
 }

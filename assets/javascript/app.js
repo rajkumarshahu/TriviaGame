@@ -205,7 +205,7 @@ $(() => {
       isAnswered = true;
       $("#remaining-time").hide();
       $(".message").html(`<div class="alert alert-info ml-4 mr-4 animated bounce" role="alert">
-      <h3>Time ran out!!!<br> Correct answer is: <strong>${trivia[currentQIndex].answer}</strong></h3>
+      <h3>Time ran out!!!<br> Correct answer is:<strong> ${trivia[currentQIndex].answer}</strong></h3>
     </div>`);
     }else{
       if (
@@ -217,14 +217,14 @@ $(() => {
         correctAns++
         $("#remaining-time").hide();
         $(".message").html(`<div class="alert alert-success ml-4 mr-4 animated fadeIn" role="alert">
-        <h3>Correct!!! You got it right.<br>Your answered: <strong>${trivia[currentQIndex].answer}</strong></h3>
+        <h3>Correct!!! You got it right.<br>Your answered:<strong> ${trivia[currentQIndex].answer}</strong></h3>
       </div>`);
         console.log("correct answer");
       } else {
         incorrectAns++
         $("#remaining-time").hide();
         $(".message").html(`<div class="alert alert-danger ml-4 mr-4 animated tada" role="alert">
-        <h3>Incorrect!!!<br> Correct answer is: <strong>${trivia[currentQIndex].answer}.</strong> You answered:<strong>${trivia[currentQIndex].choices[indexOfUserChoice]}.</strong>  </h3>
+        <h3>Incorrect!!!<br> Correct answer is: <strong>${trivia[currentQIndex].answer}.</strong> You answered:<strong> ${trivia[currentQIndex].choices[indexOfUserChoice]}.</strong>  </h3>
       </div>`);
         isAnswered == true
         console.log("Sorry");
